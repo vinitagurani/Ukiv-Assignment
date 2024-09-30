@@ -10,9 +10,13 @@ export const HighlightBox = Node.create({
   addAttributes() {
     return {
       color: {
-        default: 'yellow', // Default color for the highlight box
+        default: 'yellow', // Default color
+      },
+      borderRadius: {
+        default: '5px', // Default border radius
       },
     };
+   
   },
 
   parseHTML() {
@@ -21,12 +25,12 @@ export const HighlightBox = Node.create({
 
   renderHTML({ HTMLAttributes }) {
     return [
-      'div',
+      'p',
       mergeAttributes(HTMLAttributes, {
         'data-type': 'highlightBox',
-        style: `border: 2px solid ${HTMLAttributes.color}; background-color: ${HTMLAttributes.color}; padding: 10px;`,
+        style: `border: 2px solid ${HTMLAttributes.color}; background-color: ${HTMLAttributes.color}; padding: 10px; border-radius: ${HTMLAttributes.borderRadius}; margin: 0;`,
       }),
-      ['div', 0], // The 0 means it's a placeholder for the content
+      0, // The 0 means it's a placeholder for the content
     ];
   },
 
@@ -38,9 +42,7 @@ export const HighlightBox = Node.create({
           attrs: attributes,
         });
       },
+    
     };
   },
 });
-
-
-

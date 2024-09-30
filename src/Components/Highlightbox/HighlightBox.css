@@ -4,9 +4,6 @@
 }
 
 /* Ensure that the editor content starts below the buttons */
-.editor-content {
-  margin-top: 20px; /* Adds space between the buttons and the editor content */
-}
 
 /* Style individual buttons */
 button {
@@ -22,4 +19,10 @@ button {
 
 button:hover {
   background-color: #1f59de; /* Darker shade on hover */
+}
+
+.custom-editor{
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
