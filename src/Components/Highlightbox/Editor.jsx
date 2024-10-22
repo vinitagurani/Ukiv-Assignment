@@ -2,11 +2,10 @@ import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { HighlightBox } from './HighlightBox'; // Import the custom extension
 import './HighlightBox.css'
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const MyEditor = () => {
 
-  const [lastUsedColor, setLastUsedColor] = useState('yellow'); 
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -24,17 +23,11 @@ const MyEditor = () => {
 
 
   const addHighlightBox = (color) => {
-    setLastUsedColor(color);
+    editor.chain().focus().wrapSelectedTextInHighlightBox(color).run();
     editor.chain().focus().addHighlightBox({ color }).run();
-  };
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      // On pressing "Enter", add a new highlight box of the same color
-      addHighlightBox(lastUsedColor);
-      event.preventDefault(); // Prevent default behavior
-    }
-  };
   
+  };
+
   return (
     <>
       <div className="editor-buttons">
@@ -42,12 +35,11 @@ const MyEditor = () => {
         <button onClick={() => addHighlightBox('yellow')}>Add Yellow Highlight</button>
         <button onClick={() => addHighlightBox('lightpink')}>Add Pink Highlight</button>
       </div>
-        <EditorContent className = "custom-editor" editor={editor} onKeyDown={handleKeyDown}/>
+        <EditorContent className = "custom-editor" editor={editor}/>
      </>
   );
 };
 
 export default MyEditor;
-
 
 

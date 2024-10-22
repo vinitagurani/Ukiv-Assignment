@@ -3,8 +3,6 @@
   text-align: center;
 }
 
-/* Ensure that the editor content starts below the buttons */
-
 /* Style individual buttons */
 button {
   padding: 10px 20px; /* Adds padding to the buttons */
@@ -26,3 +24,4 @@ button:hover {
   margin-top: 0px;
   margin-bottom: 0px;
 }
+
